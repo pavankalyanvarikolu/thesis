@@ -8,6 +8,7 @@ from tensorflow.keras.layers import Dense, Input
 from sklearn.preprocessing import LabelEncoder, MultiLabelBinarizer
 from sklearn.model_selection import train_test_split
 import pandas as pd
+import json
 
 # Check if the model is installed, if not, download it
 try:
@@ -130,4 +131,10 @@ def predict_vulnerabilities(iac_code):
 
 # Predict vulnerabilities for the Terraform code from the GitHub repository
 predicted_vulnerabilities = predict_vulnerabilities(iac_code)
-print(f"Predicted Vulnerabilities Details:\n{predicted_vulnerabilities}\n")
+
+# Save results to a file
+os.makedirs('results', exist_ok=True)
+with open('results/vulnerability_report.json', 'w') as f:
+    json.dump(predicted_vulnerabilities, f, indent=4)
+
+print("Vulnerability scan completed. Results saved to results/vulnerability_report.json.")
