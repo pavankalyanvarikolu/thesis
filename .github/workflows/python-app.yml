@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install spacy tensorflow pandas gitpython
+        pip install spacy tensorflow pandas gitpython scikit-learn
         python -m spacy download en_core_web_sm
 
     - name: Run vulnerability prediction
