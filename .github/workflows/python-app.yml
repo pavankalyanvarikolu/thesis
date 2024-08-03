@@ -31,7 +31,7 @@ jobs:
 
     - name: Run Checkov to scan Terraform code
       run: |
-        checkov -d terraform-infra --output-file-path checkov_report.json --output json
+        checkov -d terraform-infra --output-file-path ./checkov_report.json --output json
       continue-on-error: true
 
     - name: Generate remediation suggestions
