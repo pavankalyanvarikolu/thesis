@@ -32,7 +32,7 @@ jobs:
     - name: Run Checkov to scan Terraform code
       run: |
         checkov -d terraform-infra --output-file-path /home/runner/work/thesis/thesis/checkov_report_output.json --output json
-     continue-on-error: true
+        continue-on-error: true
 
     - name: List files after Checkov run
       run: ls -al /home/runner/work/thesis/thesis
