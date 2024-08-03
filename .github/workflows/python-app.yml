@@ -28,21 +28,8 @@ jobs:
 
     - name: Clone Terraform code from GitHub
       run: |
-        python -c "
-import os
-import git
-
-repo_url = 'https://github.com/pavankalyanvarikolu/terraform-infra.git'
-local_path = 'terraform-infra'
-
-if os.path.exists(local_path):
-    print(f'Repository already cloned at {local_path}. Pulling latest changes...')
-    git_repo = git.Repo(local_path)
-    git_repo.remote().pull()
-else:
-    print(f'Cloning repository from {repo_url} into {local_path}...')
-    git.Repo.clone_from(repo_url, local_path)
-        "
+        python -c "import os, git; repo_url = 'https://github.com/pavankalyanvarikolu/terraform-infra.git'; local_path = 'terraform-infra'; \
+        git.Repo.clone_from(repo_url, local_path) if not os.path.exists(local_path) else git.Repo(local_path).remote().pull()"
 
     - name: Run Checkov to scan Terraform code
       run: |
@@ -51,8 +38,7 @@ else:
     - name: Generate remediation suggestions
       run: |
         python -c "
-import json
-import os
+import json, os
 
 remediation_dir = 'remediations'
 os.makedirs(remediation_dir, exist_ok=True)
