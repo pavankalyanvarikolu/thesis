@@ -34,6 +34,9 @@ jobs:
         checkov -d terraform-infra --output-file-path $(pwd)/checkov_report.json --output json
       continue-on-error: true
 
+    - name: List files after Checkov run
+      run: ls -al $(pwd)
+
     - name: Generate remediation suggestions
       run: python remediation.py
 
