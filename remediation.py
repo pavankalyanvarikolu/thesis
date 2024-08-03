@@ -1,10 +1,11 @@
 import json
 import os
 
+print("Current working directory:", os.getcwd())  # Add this to debug the working directory
 remediation_dir = 'remediations'
 os.makedirs(remediation_dir, exist_ok=True)
 
-# Make sure we're opening the correct file
+# Ensure the correct file path
 report_file = './checkov_report.json'
 
 if os.path.isfile(report_file):
