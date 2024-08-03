@@ -36,6 +36,10 @@ jobs:
 
     - name: List files after Checkov run
       run: ls -al $(pwd)
+     
+    - name: List files after Checkov run
+      run: ls -al /home/runner/work/thesis/thesis
+
 
     - name: Generate remediation suggestions
       run: python remediation.py
