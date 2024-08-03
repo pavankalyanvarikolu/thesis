@@ -6,7 +6,7 @@ remediation_dir = 'remediations'
 os.makedirs(remediation_dir, exist_ok=True)
 
 # Ensure the correct file path
-report_file = './checkov_report.json'
+report_file = './checkov_report_output.json'
 
 if os.path.isfile(report_file):
     with open(report_file, 'r') as f:
