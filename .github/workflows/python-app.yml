@@ -31,15 +31,12 @@ jobs:
 
     - name: Run Checkov to scan Terraform code
       run: |
-        checkov -d terraform-infra --output-file-path $(pwd)/checkov_report.json --output json
-      continue-on-error: true
+        checkov -d terraform-infra --output-file-path /home/runner/work/thesis/thesis/checkov_report.json --output json --verbose
+       echo "Checkov command exit code: $?"
+     continue-on-error: true
 
-    - name: List files after Checkov run
-      run: ls -al $(pwd)
-     
     - name: List files after Checkov run
       run: ls -al /home/runner/work/thesis/thesis
-
 
     - name: Generate remediation suggestions
       run: python remediation.py
