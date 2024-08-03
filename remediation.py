@@ -4,8 +4,15 @@ import os
 remediation_dir = 'remediations'
 os.makedirs(remediation_dir, exist_ok=True)
 
-with open('checkov_report.json', 'r') as f:
-    vulnerabilities = json.load(f)
+# Make sure we're opening the correct file
+report_file = './checkov_report.json'
+
+if os.path.isfile(report_file):
+    with open(report_file, 'r') as f:
+        vulnerabilities = json.load(f)
+else:
+    print(f"Error: {report_file} is not a file or does not exist.")
+    exit(1)
 
 def determine_remediation(vulnerability):
     check_id = vulnerability.get('check_id', '')
