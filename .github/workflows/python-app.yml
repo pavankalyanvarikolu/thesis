@@ -31,8 +31,8 @@ jobs:
 
     - name: Run Checkov to scan Terraform code
       run: |
-        checkov -d terraform-infra --output-file-path /home/runner/work/thesis/thesis/checkov_report.json --output json
-      continue-on-error: true
+        checkov -d terraform-infra --output-file-path /home/runner/work/thesis/thesis/checkov_report_output.json --output json
+     continue-on-error: true
 
     - name: List files after Checkov run
       run: ls -al /home/runner/work/thesis/thesis
@@ -45,7 +45,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: vulnerability-results
-        path: checkov_report.json
+        path: checkov_report_output.json
 
     - name: Upload remediations
       if: always()
