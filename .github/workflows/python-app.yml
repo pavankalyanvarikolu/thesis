@@ -26,11 +26,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install checkov gitpython
 
-
     - name: Run Checkov to scan Terraform code
-      run: |
-        checkov -d terraform-thesis --output-file-path /home/runner/work/thesis/thesis/checkov_report_output.json --output json
-        continue-on-error: true
+      run: checkov -d ./terraform-thesis --output-file-path /home/runner/work/thesis/thesis/checkov_report_output.json --output json
+      continue-on-error: true  # Moved to step level
 
     - name: List files after Checkov run
       run: ls -al /home/runner/work/thesis/thesis
