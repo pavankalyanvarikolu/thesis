@@ -36,6 +36,12 @@ jobs:
     - name: List files after Checkov run
       run: ls -al /home/runner/work/thesis/thesis
 
+    - name: Upload Checkov report as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: checkov-report
+        path: /home/runner/work/thesis/thesis/checkov_report_output.json
+
 
     # - name: Generate remediation suggestions
     #   run: python remediation.py
