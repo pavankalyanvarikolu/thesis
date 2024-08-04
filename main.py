@@ -19,8 +19,8 @@ except OSError:
     nlp = spacy.load("en_core_web_sm")
 
 # Clone the GitHub repository
-repo_url = 'https://github.com/pavankalyanvarikolu/terraform-infra.git'
-local_path = 'terraform-infra'
+repo_url = 'https://github.com/pavankalyanvarikolu/terraform_thesis.git'
+local_path = 'terraform_thesis'
 
 if os.path.exists(local_path):
     git_repo = git.Repo(local_path)
