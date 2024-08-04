@@ -34,7 +34,7 @@ jobs:
       continue-on-error: true  # Moved to step level
       
     - name: List files after Checkov run
-      run: ls -al /home/runner/work/thesis/thesi
+      run: ls -al /home/runner/work/thesis/thesis
 
 
     # - name: Generate remediation suggestions
