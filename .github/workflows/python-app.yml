@@ -26,26 +26,28 @@ jobs:
         python -m pip install --upgrade pip
         pip install checkov gitpython
 
-    - name: Run Checkov to scan Terraform code
-      run: checkov -d ./terraform-thesis --output-file-path /home/runner/work/thesis/thesis/checkov_report_output.json --output json
-      continue-on-error: true  # Moved to step level
-
     - name: List files after Checkov run
       run: ls -al /home/runner/work/thesis/thesis
 
-    - name: Generate remediation suggestions
-      run: python remediation.py
+    # - name: Run Checkov to scan Terraform code
+    #   run: checkov -d ./terraform-thesis --output-file-path /home/runner/work/thesis/thesis/checkov_report_output.json --output json
+    #   continue-on-error: true  # Moved to step level
 
-    - name: Upload results and remediations
-      if: always()
-      uses: actions/upload-artifact@v2
-      with:
-        name: vulnerability-results
-        path: checkov_report_output.json
 
-    - name: Upload remediations
-      if: always()
-      uses: actions/upload-artifact@v2
-      with:
-        name: remediation-results
-        path: remediations/
+
+    # - name: Generate remediation suggestions
+    #   run: python remediation.py
+
+    # - name: Upload results and remediations
+    #   if: always()
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: vulnerability-results
+    #     path: checkov_report_output.json
+
+    # - name: Upload remediations
+    #   if: always()
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: remediation-results
+    #     path: remediations/
