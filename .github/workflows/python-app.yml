@@ -30,7 +30,7 @@ jobs:
       run: ls -al /home/runner/work/thesis/thesis
 
     - name: Run AI model to scan Terraform code
-      run: checkov -d ./terraform_thesis --output-file-path /home/runner/work/thesis/thesis/checkov_report_output.json --output json
+      run: checkov -d ./terraform_thesis 
       continue-on-error: true  # Moved to step level
       
     - name: List files after Checkov run
